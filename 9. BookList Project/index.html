@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/css/mdb.min.css" rel="stylesheet">
+    <title>My Book List</title>
+</head>
+
+<body>
+    <div class="container text-center mt-5">
+        <h1><i class="fas fa-book-reader text-primary"></i></h1>
+        <h1>My<span class="text-primary font-weight-bold">Book</span>List</h1>
+        <!-- Material form login -->
+        <div class="card mt-5 ">
+            <div id="alertMessage">
+                <div class="alert alert-success d-none" role="alert">
+                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                </div>
+            </div>
+            <!--Card content-->
+            <div class="card-body px-lg-5 p-4 border border-primary" id="cardBody">
+
+                <!-- Form -->
+                <form class="text-center text-primary" id="bookForm">
+
+                    <!-- Title -->
+                    <div class="md-form">
+                        <input type="text" id="bookTitle" class="form-control">
+                        <label for="bookTitleFor">Title</label>
+                    </div>
+
+                    <!-- Author -->
+                    <div class="md-form">
+                        <input type="text" id="bookAuthor" class="form-control">
+                        <label for="forBookAuthor">Author</label>
+                    </div>
+
+                    <!-- ISBN -->
+                    <div class="md-form">
+                        <input type="text" id="bookISBN" class="form-control">
+                        <label for="forBookISBN">ISBN#</label>
+                    </div>
+
+                    <!-- Sign in button -->
+                    <button class="btn btn-primary btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" id="addNewBook">Add Book</button>
+
+                </form>
+                <!-- Form -->
+
+            </div>
+
+        </div>
+
+        <table class="table table-striped table-responsive-md btn-table mt-5 d-none" id="bookTable">
+            <thead>
+                <tr>
+                    <th class="font-weight-bold">Title</th>
+                    <th class="font-weight-bold">Author</th>
+                    <th class="font-weight-bold">#ISBN</th>
+                    <th class="font-weight-bold">Options</th>
+                </tr>
+            </thead>
+
+            <tbody id="bookTableBody" class="font-weight-bold">
+            </tbody>
+
+        </table>
+        <!-- Material form login -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+            <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+            <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold text-center" id="exampleModalLongTitle">Update</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true"> &times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Title -->
+                        <div class="md-form">
+                            <input type="text" id="editBookTitle1" class="form-control" value=" ">
+                            <label for="foreditBookTitle1">Title</label>
+                        </div>
+
+                        <!-- Author -->
+                        <div class="md-form">
+                            <input type="text" id="editBookAuthor1" class="form-control" value=" ">
+                            <label for="foreditBookAuthor1">Author</label>
+                        </div>
+
+                        <!-- ISBN -->
+                        <div class="md-form">
+                            <input type="text" id="editBookISBN1" class="form-control" value=" ">
+                            <label for="foreditBookISBN1">ISBN#</label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end p-1">
+                        <button type="button" class="btn btn-outline-danger" id='deleteEdit' data-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-primary" id="saveEdit" data-dismiss="modal">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/js/mdb.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>

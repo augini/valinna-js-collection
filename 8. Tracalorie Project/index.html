@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/css/mdb.min.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+
+
+<body>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron text-center container mt-5 border">
+        <!-- Title -->
+        <div class="alert alert-warning container d-none" role="alert">
+            Please, fill in both fields 😉
+        </div>
+        <h2 class="card-title h2">Track Calories</h2>
+        <!-- Form -->
+        <form style="color: #757575;" action="#!" id="itemForm">
+
+            <div class="d-flex flex-row">
+                <!-- Meal -->
+                <div class="md-form mt-3 w-50 mr-5">
+                    <input type="text" id="mealInput" class="form-control">
+                    <label for="mealInput">Meal</label>
+                </div>
+
+                <!-- Calory -->
+                <div class="md-form mt-3 w-50">
+                    <input type="number" id="caloryInput" class="form-control">
+                    <label for="caloryInput">Calory</label>
+                </div>
+            </div>
+            <!--Create a new item button -->
+            <button id="newItemBtn" class="btn btn-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" style="display: block;">Add Meal</button>
+        </form>
+
+        <!-- Update and delete button section -->
+        <div id="updateSectionBtn" class="d-none flex-row">
+            <button id="updateBtn" class="btn btn-warning btn-rounded btn-block z-depth-0 my-4 waves-effect mr-2" type="submit">Update</button>
+            <button id="deleteBtn" class="btn btn-danger btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Delete</button>
+        </div>
+        <!-- Form -->
+    </div>
+
+    <div id="sectionUL" class="jumbotron text-center container mt-5">
+        <div>
+            <ul id="itemList" class="list-group list-group-flush"></ul>
+        </div>
+        <div class="pt-2">
+            <button type="button" class="btn btn-info waves-effect">Star <span class="far fa-star ml-1"></span></button>
+            <button id="clearAll" type="button" class="btn btn-outline-danger waves-effect">Clear all <i class="fas fa-trash-alt ml-1"></i></button>
+        </div>
+
+    </div>
+
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/js/mdb.min.js"></script>
+
+    <script src="./UIelements.js"></script>
+    <script src="./newApp.js"></script>
+    <!-- <script src="./UIelements.js"></script>
+    <script src="./specialFunctions.js"></script>
+    <script src="./UIStates.js"></script>
+    <script src="./app.js"></script> -->
+</body>
+
+</html>
