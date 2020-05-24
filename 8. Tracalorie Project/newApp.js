@@ -10,11 +10,11 @@ const itemCtrl = (function () {
 
   const data = {
     items: [
-      { meal: "steak", calory: '100', id: 1234 },
-      { meal: "plov", calory: '123', id: 1324 },
+      { meal: "steak", calory: "100", id: 1234 },
+      { meal: "plov", calory: "123", id: 1324 },
     ],
-    currentItem: '',
-    totalCalories: ' '
+    currentItem: "",
+    totalCalories: 0,
   };
 
   //Public Methods
@@ -26,15 +26,16 @@ const itemCtrl = (function () {
       return data.items;
     },
     addNewItem: (item) => {
-      //Generate a random ID
-      let id = Math.floor(Math.random() * 11111);
+      data.totalCalories = data.totalCalories + item.calory;
 
-      //Update the items data structure
-      item.id = id;
-
-      data.items.push(item)
-
-      return item
+      //Set total calories
+      caloryCounter.innerText = data.totalCalories
+      
+      //Push the new meal
+      data.items.push(item);
+    },
+    getCaloryCounter: () => {
+      return data.totalCalories;
     },
   };
 })();
@@ -44,6 +45,10 @@ const UICtrl = (function () {
   //Private methods
 
   const createListItem = (item) => {
+
+    //Remove the display none from section list
+    sectionUL.classList.remove('d-none')
+    
     //Create a li element in the DOM
     const li = document.createElement("li");
 
@@ -62,48 +67,87 @@ const UICtrl = (function () {
     span.setAttribute("class", "far fa-edit");
     li.appendChild(span);
 
-    return li
-  }
+    return li;
+  };
 
   //Pupulate the list item in the DOM with list items
   const populateItemList = function (items) {
     items.forEach(function (item) {
-      const HTMLitem = createListItem(item)
+      const HTMLitem = createListItem(item);
       itemList.appendChild(HTMLitem);
     });
+  };
+
+  //Set alert function
+  const setWarning = () => {
+    warning.classList.remove("d-none");
+    jumbotron.classList.add("border-warning");
+  };
+
+  //Remove alert warning
+  const removeWarning = () => {
+    warning.classList.add("d-none");
+    jumbotron.classList.remove("border-warning");
+  };
+
+  //Function to clear input fields
+  const clearInputField = () => {
+    mealInput.value = "";
+    caloryInput.value = "";
+  };
+
+  //Function to input a new item
+  const getItemInput = (e) => {
+    if (mealInput.value !== "" && caloryInput.value !== "") {
+      //Generate a random ID
+      let id = itemCtrl.getItems().length + 1;
+
+      //Generate a new object
+      let inputMeal = {
+        meal: mealInput.value,
+        calory: parseInt(caloryInput.value),
+        id: id,
+      };
+
+      //Push to the meals array
+      itemCtrl.addNewItem(inputMeal);
+
+      //Append HTML to meal input
+      itemList.appendChild(createListItem(inputMeal));
+
+      //Clear input fields
+      clearInputField();
+
+      //Prevent the default behaviour
+      e.preventDefault();
+    } else {
+      //Toggle the warning alert function
+      setWarning();
+      setTimeout(() => {
+        removeWarning();
+      }, 5000);
+    }
   };
 
   //Public methods
   return {
     populateItemList: (items) => {
-      populateItemList(items)
+      populateItemList(items);
     },
 
     createListItem: (item) => {
-      createListItem(item)
+      createListItem(item);
     },
 
-    getItemInput: () => {
-      if (mealInput.value !== "" && caloryInput.value !== "") {
-        return {
-          meal: mealInput.value,
-          calory: caloryInput.value
-        }
-      } else {
-        //Toggle the warning alert function
-        setWarning();
-        setTimeout(() => {
-          removeWarning();
-        }, 5000);
-      }
+    getItemInput: (e) => {
+      getItemInput(e);
     },
+
     setWarning: () => {
-      warning.classList.remove("d-none");
-      jumbotron.classList.add("border-warning");
+      setWarning();
     },
     removeWarning: () => {
-      warning.classList.add("d-none");
-      jumbotron.classList.remove("border-warning");
+      setWarning();
     },
   };
 })();
@@ -114,23 +158,8 @@ const AppCtrl = (function (itemCtrl, UICtrl) {
 
   //Create event loaders function
   const eventLoader = function () {
-    itemForm.addEventListener("submit", addNewItem);
+    itemForm.addEventListener("submit", UICtrl.getItemInput);
   };
-
-  const addNewItem = (e) => {
-    //Get the input meal
-    let newMealInput = UICtrl.getItemInput()
-
-    //Add to the list data structure
-    const newItem = itemCtrl.addNewItem(newMealInput)
-
-    //Append with HTML
-    const HTMLItem = UICtrl.createListItem(newItem)
-
-    itemList.appendChild(HTMLItem)
-    e.preventDefault()
-  }
-
 
   //Public methods
   return {

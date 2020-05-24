@@ -14,6 +14,8 @@ const jumbotron = document.querySelector('.jumbotron')
 const updateBtn = document.getElementById('updateBtn')
 const deleteBtn = document.getElementById('deleteBtn')
 const clearAll = document.getElementById('clearAll')
+const caloryCounter = document.getElementById("caloryCounter")
+
 
 //warning alert for empty input
 const warning = document.querySelector(".alert-warning")
