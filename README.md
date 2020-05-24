@@ -1,4 +1,5 @@
-# Fetch_API_ES6
-Fetching data from three different resources with ES6
+# Vanilla JavaScript Projects
+
+List of small projects that are built to demonstrate various vanilla JavaScript design patterns and code structures
 
 [Live Demo]( https://augini.github.io/Vanilla-JavaScript-Projects/) 
