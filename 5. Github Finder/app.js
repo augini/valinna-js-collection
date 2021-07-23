@@ -19,7 +19,7 @@ async function getUser() {
         username = inputField.value
 
         //Await until the data is resolved
-        const response = await fetch(`https://api.github.com/users/${username}?client_id=698ef61c96e417319d81&client_secret=1e863cb10c802b58536c3c655c04d98494392aac`)
+        const response = await fetch(`https://api.github.com/users/${username}?client_id='your_client_id'&client_secret='your_client_secret'`)
 
         //Only proceed if the response status is equal to 200
         if (response.status === 200) {
